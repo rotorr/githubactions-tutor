@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name:  Run one line script
-        run:  sh ./github-actions-script.sh
+        run:  sh ./gh-actions-script.sh
 
       - name:  Run multi line script
         run: | 
