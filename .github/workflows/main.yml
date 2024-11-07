@@ -23,7 +23,7 @@ jobs:
           echo What dev tools are installed?
           mvn --version
           gradle --version
-          ant --version
+          
 
 
 
