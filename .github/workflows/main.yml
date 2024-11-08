@@ -10,7 +10,7 @@ jobs:
 
     # Steps represent sequence of tasks that will be executed as part of a job
     steps:
-      # Checks out repo under $GITHUB_WORKSPACE, so your job can access it 
+    # Checks out repo under $GITHUB_WORKSPACE, so your job can access it 
       - name:  Step 1 - Log the pre-build disk space
       run: df
 
