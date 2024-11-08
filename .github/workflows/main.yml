@@ -1,45 +1,39 @@
 name: learn github-actions
 on: 
   push:
-    branches:  [ main ]
+    branches: [ main ]
   pull_request:
-    branches:  [ main ]
+    branches: [ main ]
+
 jobs:
   build: 
     runs-on: ubuntu-latest
 
-    # Steps represent sequence of tasks that will be executed as part of a job
-    # Checks out your repo under $Github_workspace, so your job can access it
     steps:
-      - name:  Step 1 - Log the pre-build disk space
-      run: df
+      - name: Step 1 - Log the pre-build disk space
+        run: df
 
-      - name:  Step 2 -Checkout main Github branch
-      run: actions/checkout@v4
+      - name: Step 2 - Checkout main Github branch
+        uses: actions/checkout@v4
 
-      - name:  Step 3 - Setup JDK 1.8
-      run: actions/setup-java@v1
+      - name: Step 3 - Setup JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: '1.8'
 
-      - name:  Step 4 - Build Jakarta web app with Maven
-      run: echo mvn -B package --file pom.xml
+      - name: Step 4 - Build Jakarta web app with Maven
+        run: mvn -B package --file pom.xml
 
-      - name:  Step 5 - Build native Android app
-      run: |
-        echo Here is the ANDROID_SDK_ROOT
-        echo $ANDROID_SDK_ROOT
+      - name: Step 5 - Build native Android app
+        run: |
+          echo Here is the ANDROID_SDK_ROOT
+          echo $ANDROID_SDK_ROOT
 
-      - name:  Step 6 - Run Selenium tests
-      run: |
-        echo the SELENIUM_JAR_PATH
-        echo $SELENIUM_JAR_PATH
+      - name: Step 6 - Run Selenium tests
+        run: |
+          echo the SELENIUM_JAR_PATH
+          echo $SELENIUM_JAR_PATH
 
-      - name:  Step 7 - Log build tools version
-      run: |
-        git --version
-        mvn --version
-        ant -version
-        gradle --version
+      - name: Step 7 - Log build tools version
+        run: echo "Logging build tools version"
 
-      - name:  Step 8 - Log the post build disk space
-      run: df
-      
