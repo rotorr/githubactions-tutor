@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent sequence of tasks that will be executed as part of a job
+    # Checks out your repo under $Github_workspace, so your job can access it
     steps:
-    # Checks out repo under $GITHUB_WORKSPACE, so your job can access it 
       - name:  Step 1 - Log the pre-build disk space
       run: df
 
