@@ -1,0 +1,30 @@
+name:  Publish GH Action artifacts example
+
+on:  
+  push:  
+    branches: [ main ]
+
+jobs:
+
+  archive-build-artifacts:
+    runs-on:  ubuntu-latest
+    steps:
+
+      - name:  Step 1 - create temporary artifact downloads folder
+        run:  mkdir downloads
+
+      - name:  Step 2 - Add Artifacts to publish to the Temp Folder
+        run:  |
+          cd downloads
+          echo 'alpha'  > alpha.html
+          echo 'bravo'  > bravo.html
+          echo 'charlie'  > charlie.html
+          cd ..
+
+      - name:  Step 3 - Ust the upload artifacts GH Action
+        uses:  actions/upload.artifact@v2
+        with:
+          name:  assets-for-download
+          path:  downloads
+
+    
